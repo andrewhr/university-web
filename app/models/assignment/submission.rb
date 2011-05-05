@@ -8,6 +8,9 @@ class Assignment::Submission < ActiveRecord::Base
                           :dependent => :delete_all
 
   has_many   :activities, :dependent => :delete_all
+  
+  has_many   :reviews,    :class_name => "::Assignment::Review",
+                          :dependent  => :delete_all
 
   def create_comment(comment_data)
     comment = comments.create(comment_data)

@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
   has_one  :admissions_submission,    :class_name => "Admissions::Submission",
                                       :dependent  => :destroy
                                       
+  has_and_belongs_to_many :reviews,   :join_table => "reviews_users",
+                                      :class_name => "Assignment::Review"
+  
   accepts_nested_attributes_for       :admissions_submission
 
   attr_protected :access_level, :alumni_number, :alumni_month, :alumni_year
